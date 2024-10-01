@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 // Een nieuwe variable met naam $name definieren:
 $name = "Voornaam Naam"; // Wordt niet meer gebruikt
 
-$id = 3000;
+$id = @$_GET['volgnummer'];
 
 // $firstname = "Voornaam";
 // $lastname = "Familienaam";
