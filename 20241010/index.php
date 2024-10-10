@@ -1,7 +1,7 @@
 <?php
 require('wikis.php');
 
-$wikis = array_reverse($wikis);
+$wikis = array_reverse($wikis, true);
 ?>
 <!DOCTYPE html>
 <html lang="en" data-lt-installed="true">
@@ -34,12 +34,12 @@ $wikis = array_reverse($wikis);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($wikis as $wiki): ?>
+                    <?php foreach ($wikis as $key => $wiki): ?>
                         <tr>
                             <td><b><?= $wiki['episode']; ?></b></td>
                             <td><?= $wiki['title']; ?></td>
                             <td><?= $wiki['tip']; ?></td>
-                            <td><a href="detail.php">Speel nu</a></td>
+                            <td><a href="detail.php?id=<?= $key; ?>">Speel nu</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
