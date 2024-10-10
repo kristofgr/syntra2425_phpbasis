@@ -15,6 +15,15 @@ include($wiki['data']);
 $allowed_words = ['in', 'de', 'door', 'het'];
 
 $text_parts = explode(' ', $text);
+
+for ($i = 0; $i < count($text_parts); $i++) {
+    if (!in_array($text_parts[$i], $allowed_words)) {
+        $len = strlen($text_parts[$i]);
+        $text_parts[$i] = str_repeat("", $len);
+    }
+}
+
+$text = implode(' ', $text_parts);
 ?>
 <!DOCTYPE html>
 <html lang="en" data-lt-installed="true">
@@ -37,12 +46,12 @@ $text_parts = explode(' ', $text);
                 <h1>WikiWisKwis - <?= $wiki['episode']; ?></h1>
             </header>
 
+            <?= $text; ?>
 
-
-            <pre>
+            <!-- <pre>
             <?php print_r($allowed_words); ?>
             <?php print_r($text_parts); ?>
-            </pre>
+            </pre> -->
 
 
 

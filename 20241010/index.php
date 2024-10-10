@@ -34,7 +34,7 @@ $wikis = array_reverse($wikis, true);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($wikis as $key => $wiki): ?>
+                    <?php foreach ($wikis as $index => $wiki): ?>
                         <tr>
                             <td><b><?= $wiki['episode']; ?></b></td>
                             <td><?= $wiki['title']; ?></td>
