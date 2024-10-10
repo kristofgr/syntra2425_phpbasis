@@ -1,5 +1,7 @@
 <?php
+require('wikis.php');
 
+$wikis = array_reverse($wikis);
 ?>
 <!DOCTYPE html>
 <html lang="en" data-lt-installed="true">
@@ -28,15 +30,18 @@
                         <th>Datum</th>
                         <th>Titel</th>
                         <th>Tip</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><b>01/01/2024</b></td>
-                        <td>WikiWisKwis999</td>
-                        <td>Dit is de tip</td>
-                    </tr>
-
+                    <?php foreach ($wikis as $wiki): ?>
+                        <tr>
+                            <td><b><?= $wiki['episode']; ?></b></td>
+                            <td><?= $wiki['title']; ?></td>
+                            <td><?= $wiki['tip']; ?></td>
+                            <td><a href="detail.php">Speel nu</a></td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
 
