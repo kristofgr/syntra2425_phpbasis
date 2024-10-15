@@ -2,6 +2,8 @@
 require('wikis.php');
 
 $index = @$_GET['id'];
+$g = @$_GET['g'];
+$guesses = explode(',', $g);
 
 if (!isset($wikis[$index])) {
     header("HTTP/1.0 404 Not Found");
@@ -10,16 +12,33 @@ if (!isset($wikis[$index])) {
 }
 
 $wiki = $wikis[$index];
+
 include($wiki['data']);
 
-$allowed_words = ['in', 'de', 'door', 'het'];
+
+$allowed_words = ['in', 'de', 'door', 'het', 'is', 'een'];
+$allowed_words = array_merge($allowed_words, $guesses);
 
 $text_parts = explode(' ', $text);
 
+// print '<pre>';
+// var_dump($text);
+// print_r($text_parts);
+// print '<pre>';
+
+function custom_in_array($needle, $haystack)
+{
+    return in_array(strtolower($needle), array_map('strtolower', $haystack));
+}
+
+
 for ($i = 0; $i < count($text_parts); $i++) {
-    if (!in_array($text_parts[$i], $allowed_words)) {
+    // print $text_parts[$i];
+    // exit;
+
+    if (!custom_in_array($text_parts[$i], $allowed_words)) {
         $len = strlen($text_parts[$i]);
-        $text_parts[$i] = str_repeat("", $len);
+        $text_parts[$i] = str_repeat("*", $len);
     }
 }
 
@@ -46,14 +65,14 @@ $text = implode(' ', $text_parts);
                 <h1>WikiWisKwis - <?= $wiki['episode']; ?></h1>
             </header>
 
+            <ul>
+                <?php foreach ($guesses as $guess): ?>
+                    <li><?= $guess; ?></li>
+                <?php endforeach; ?>
+            </ul>
+
+
             <?= $text; ?>
-
-            <!-- <pre>
-            <?php print_r($allowed_words); ?>
-            <?php print_r($text_parts); ?>
-            </pre> -->
-
-
 
         </section>
     </main>

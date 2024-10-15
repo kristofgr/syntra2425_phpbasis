@@ -39,7 +39,7 @@ $wikis = array_reverse($wikis, true);
                             <td><b><?= $wiki['episode']; ?></b></td>
                             <td><?= $wiki['title']; ?></td>
                             <td><?= $wiki['tip']; ?></td>
-                            <td><a href="detail.php?id=<?= $key; ?>">Speel nu</a></td>
+                            <td><a href="detail.php?id=<?= $index; ?>">Speel nu</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
