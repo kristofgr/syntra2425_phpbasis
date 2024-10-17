@@ -27,6 +27,8 @@ Na klik herlaadt dezelfde pagina en wordt wordt willekeurig (!) één van volgen
 - Outlook not so good.
 - Very doubtful.
 
+Maak hiervoor gebruik van de functie getRandomAnswer of shakeEightBall.
+
 Toon onder het antwoord opnieuw de knop, maar pas het label aan zodat er nu "ASK AGAIN" te lezen staat.
 
 De pagina toont nooit 2x achter elkaar hetzelfde antwoord.
