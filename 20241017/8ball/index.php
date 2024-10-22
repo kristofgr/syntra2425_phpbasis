@@ -6,39 +6,40 @@ error_reporting(E_ALL);
 $answers = [
     'It is certain.',
     'It is decidedly so.',
-    'Without a doubt.',
-    'Yes definitely.',
-    'You may rely on it.',
-    'As I see it, yes.',
-    'Most likely.',
-    'Outlook good.',
-    'Yes.',
-    'Signs point to yes.',
-    'Reply hazy, try again.',
-    'Ask again later.',
-    'Better not tell you now.',
-    'Cannot predict now.',
-    'Concentrate and ask again.',
-    'Don\'t count on it.',
-    'My reply is no.',
-    'My sources say no.',
-    'Outlook not so good.',
+    // 'Without a doubt.',
+    // 'Yes definitely.',
+    // 'You may rely on it.',
+    // 'As I see it, yes.',
+    // 'Most likely.',
+    // 'Outlook good.',
+    // 'Yes.',
+    // 'Signs point to yes.',
+    // 'Reply hazy, try again.',
+    // 'Ask again later.',
+    // 'Better not tell you now.',
+    // 'Cannot predict now.',
+    // 'Concentrate and ask again.',
+    // 'Don\'t count on it.',
+    // 'My reply is no.',
+    // 'My sources say no.',
+    // 'Outlook not so good.',
     'Very doubtful.',
 ];
 
-function getRandomAnswer() // Deze functie returnt een random KEY (getal dus)
+function getRandomAnswer($excl) // Deze functie returnt een random KEY (getal dus)
 {
     global $answers;
-    $random = array_rand($answers);
+    do {
+        $random = array_rand($answers);
+    } while ($random == $excl);
+
     return $random;
 }
 
 $previousKey = @$_GET['p'];
 
-$newKey = getRandomAnswer();
+$newKey = getRandomAnswer($previousKey);
 $answer = $answers[$newKey];
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,11 +57,11 @@ $answer = $answers[$newKey];
         <?php if ($previousKey !== null): ?>
 
             <h2><?= $answer; ?></h2>
-            <a href="index.php?p=<?= $newKey; ?>"><b>ASK AGAIN</b></a>
+            <a href="?p=<?= $newKey; ?>"><b>ASK AGAIN</b></a>
 
         <?php else: ?>
 
-            <a href="index.php?p=<?= $newKey; ?>"><b>ASK 8-BALL</b></a>
+            <a href="?p=<?= $newKey; ?>"><b>ASK 8-BALL</b></a>
 
         <?php endif; ?>
 
