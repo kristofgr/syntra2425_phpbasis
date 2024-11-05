@@ -3,7 +3,11 @@ require('wikis.php');
 
 $index = @$_GET['id'];
 $g = @$_GET['g'];
-$guesses = explode(',', $g);
+$guesses = [];
+
+if ($g) {
+    $guesses = explode(',', $g);
+}
 
 if (!isset($wikis[$index])) {
     header("HTTP/1.0 404 Not Found");
@@ -64,6 +68,12 @@ $text = implode(' ', $text_parts);
             <header>
                 <h1>WikiWisKwis - <?= $wiki['episode']; ?></h1>
             </header>
+
+            <form method="get" action="detail.php">
+                <input type="hidden" id="id" name="id" value="<?= $index; ?>" />
+                <input type="text" id="g" name="g" placeholder="Gok een woord" />
+                <input type="submit" id="submit" value="verstuur" name="submit" />
+            </form>
 
             <ul>
                 <?php foreach ($guesses as $guess): ?>
