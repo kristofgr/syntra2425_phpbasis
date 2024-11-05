@@ -54,7 +54,7 @@ $tasks = getTasks();
 
 
                 <label for="taak">taak:</label>
-                <input type="text" id="taak" name="taak" size="20" placeholder="Voeg hier een taak toe...">
+                <input type="text" id="taak" value="<?= $newTask; ?>" name="taak" size="20" placeholder="Voeg hier een taak toe...">
 
                 <!-- <label for="select1">Select label:</label>
                 <select id="select1">
