@@ -1,6 +1,10 @@
 <?php
 include('db.inc.php');
 
+print '<pre>';
+print_r($_POST);
+print '</pre>';
+
 $tasks = getTasks();
 ?>
 <!DOCTYPE html>
@@ -62,7 +66,7 @@ $tasks = getTasks();
                     <option value="option2">option2</option>
                 </select> -->
 
-                <button type="submit">Voeg toe</button>
+                <button id="verzenden" name="verzenden" type="submit">Voeg toe</button>
             </form>
         </section>
 
