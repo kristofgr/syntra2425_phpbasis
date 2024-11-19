@@ -42,13 +42,21 @@ if (@$_POST['verzenden'] !== null) {
             background-color: red;
             color: white;
         }
+
+        .hoofdstuk {
+            background-color: teal;
+        }
+
+        .vet {
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
     <main>
 
-        <section id="addform">
+        <section>
             <form method="post" action="index.php">
                 <header>
                     <h2>Subscribe...</h2>
