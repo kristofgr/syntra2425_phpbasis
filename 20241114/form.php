@@ -64,6 +64,7 @@ if (@$_POST['submit']) { // is "submit" als key aanwezig in de $_POST array
     if (count($errors) == 0) { // er werden geen fouten geregistreerd tijdens validatie
         $return = insertNewsItem($title, $body, $author_id, $status, $datum);
         header("Location: index.php?message=Record werd toegevoegd...");
+        exit;
     }
 }
 
