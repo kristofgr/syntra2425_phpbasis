@@ -1,5 +1,7 @@
 <?php
-session_start();
+require('functions.inc.php');
+
+requiredLoggedOut();
 
 $pageTitle = "Login";
 $errors = [];
@@ -17,11 +19,11 @@ if (isset($_POST['inputmail'])) {
         $errors[] = "Please fill in password.";
     }
 
-    if (($_POST['inputmail'] == "user@user.com") && ($_POST['inputpass'] == "test1234")) {
-        // login success
-        // todo  redirect
-        $_SESSION['loggedin'] = time() + 3600;
+    $uid = isValidLogin($_POST['inputmail'], $_POST['inputpass']);
 
+    if ($uid) {
+        // login success
+        setLogin($uid);
         header("Location: admin.php");
         exit;
     } else {
